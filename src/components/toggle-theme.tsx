@@ -8,10 +8,12 @@ export default function Toggle() {
         <button className="text-red-600"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         >
-            Toggle Theme     <h1>
-            Current Theme: {theme}
-        </h1>
+            Toggle Theme
+            <h1>
+                Current Theme:
+                {theme}
+            </h1>
         </button>
-    
+
     );
 }
