@@ -1,6 +1,7 @@
 
 const env = {
-    DOMAIN_URL: process.env.DOMAIN_URL as string
+   DOMAIN_URL: process.env.NEXT_PUBLIC_DOMAIN_URL!,
+  KIHEAT_BACKEND_URL: process.env.NEXT_PUBLIC_KIHEAT_BACKEND_URL!,
 }
 
 const isServer = typeof window === 'undefined';
