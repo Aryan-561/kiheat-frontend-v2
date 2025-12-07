@@ -176,3 +176,15 @@
 [data-collapsible="icon"] [data-sidebar="menu-button"] {
   justify-content: center;
 }
+
+/* Light theme → dark transparent highlight */
+::selection {
+  background: color-mix(in srgb, var(--foreground) 90%, transparent);
+  color: var(--background);
+}
+
+/* Dark theme → light transparent highlight */
+.dark ::selection {
+  background: color-mix(in srgb, var(--foreground) 90%, transparent);
+  color: var(--background);
+}
