@@ -60,6 +60,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
 }
 
 /* -------------------------------------------------------
@@ -108,6 +110,8 @@
   --sidebar-accent-foreground: #002D21;
   --sidebar-border: #E7EBE9;
   --sidebar-ring: #20A676;
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
 }
 
 /* -------------------------------------------------------
@@ -154,6 +158,8 @@
   --sidebar-accent-foreground: #F2F4F3;
   --sidebar-border: #00392B;
   --sidebar-ring: #1CE2A1;
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
 }
 
 /* -------------------------------------------------------
