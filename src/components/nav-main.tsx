@@ -45,11 +45,11 @@ export function NavMain({
               defaultOpen={item.isActive}
               className="group/collapsible"
             >
-              <SidebarMenuItem>
+              <SidebarMenuItem className="my-2">
                 <CollapsibleTrigger asChild>
-                  <SidebarMenuButton tooltip={item.title}>
-                    {item.icon && <item.icon />}
-                    <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
+                  <SidebarMenuButton className="flex justify-center " tooltip={item.title}>
+                    {item.icon && <item.icon className="!size-6" />}
+                    <span className="group-data-[collapsible=icon]:hidden text-lg">{item.title}</span>
                     <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 group-data-[collapsible=icon]:hidden" />
                   </SidebarMenuButton>
                 </CollapsibleTrigger>
@@ -58,8 +58,8 @@ export function NavMain({
                     {item.items?.map((subItem) => (
                       <SidebarMenuSubItem key={subItem.title}>
                         <SidebarMenuSubButton asChild>
-                          <Link href={subItem.url}>
-                            <span>{subItem.title}</span>
+                          <Link href={subItem.url} className="my-0.5 pl-4">
+                            <span className="text-lg">{subItem.title}</span>
                           </Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
@@ -70,11 +70,11 @@ export function NavMain({
             </Collapsible>
           ) : (
             // Regular item without sub-items
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title} asChild>
+            <SidebarMenuItem className="my-1" key={item.title}>
+              <SidebarMenuButton  tooltip={item.title} asChild>
                 <Link href={item.url}>
-                  {item.icon && <item.icon />}
-                  <span>{item.title}</span>
+                    {item.icon && <item.icon className="!size-6" />}
+                  <span className="group-data-[collapsible=icon]:hidden text-lg">{item.title}</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
