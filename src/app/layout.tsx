@@ -4,6 +4,8 @@ import "./globals.css";
 import { TanStackProvider } from "@/provider/tanstack-provider"
 import { NextThemeProvider } from "@/provider/theme-provider"
 import Footer from "@/components/footer";
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 
 
 const geistSans = Geist({
@@ -33,8 +35,16 @@ export default function RootLayout({
       >
         <NextThemeProvider>
           <TanStackProvider>
-            {children}
-            <Footer />
+            <SidebarProvider>
+              <AppSidebar/>
+            <SidebarInset>
+              <SidebarTrigger className="absolute top-2 left-2 z-50" />
+              <main>
+              {children}
+              </main>
+              <Footer />
+            </SidebarInset>
+            </SidebarProvider>
           </TanStackProvider>
         </NextThemeProvider>
       </body>
