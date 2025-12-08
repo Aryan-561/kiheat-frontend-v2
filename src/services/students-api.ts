@@ -17,7 +17,7 @@ export const StudentsAPI = () => ({
     },
 
     getStudentMarksheetBysemester: async ({ id, semester }: { id: string, semester: number }) => {
-        const { data } = await axiosInstance.get(`/student/marksheet:${id}?semester=${semester}`)
+        const { data } = await axiosInstance.get(`/student/marksheet/${id}?semester=${semester}`)
         return data
     }
 })
