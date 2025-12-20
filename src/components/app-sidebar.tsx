@@ -42,41 +42,41 @@ const data = {
     },
     {
       title: "Search",
-      url: "#",
+      url: "/search",
       icon: Search,
     },
     {
       title: "Compare",
-      url: "#",
+      url: "/compare",
       icon: ScaleIcon,
     },
     {
       title: "Toppers",
-      url: "#",
+      url: "/toppers",
       icon: User,
     },
     {
       title: "Estimate CGPA",
-      url: "#",
+      url: "/estimate-cgpa",
       icon: CalculatorIcon,
     },
     {
       title: "Programmes",
-      url: "#",
+      url: "/programmes",
       icon: Book,
       isActive: true,
       items: [
         {
           title: "BCA",
-          url: "#",
+          url: "/programmes/bca",
         },
         {
           title: "BBA",
-          url: "#",
+          url: "/programmes/bba",
         },
         {
           title: "B.COM",
-          url: "#",
+          url: "/programmes/bcom",
         },
       ],
     },
