@@ -7,6 +7,8 @@ export const useStudentByName = (name: string, course: string) => {
         queryKey: ['student-by-name', name, course],
         queryFn: () => StudentsAPI().getStudentByName({ name, course }),
         enabled: !!name && !!course,
+        
+        
     });
 }
 export const useStudentByEnrollment = (id: string) => {

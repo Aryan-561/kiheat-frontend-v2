@@ -7,7 +7,7 @@ export const StudentsAPI = () => ({
     },
 
     getStudentByEnrollment: async ({ id }: { id: string }) => {
-        const { data } = await axiosInstance.get(`/student:${id}`)
+        const { data } = await axiosInstance.get(`/student/${id}`)
         return data
     },
 
