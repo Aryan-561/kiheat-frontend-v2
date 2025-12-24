@@ -22,10 +22,10 @@ export const useTopStudents = () => {
         queryFn: () => StudentsAPI().getTopStudents(),
     });
 }
-export const useStudentMarksheetBySemester = (id: string, semester: number) => {
+export const useStudentMarksheetBySemester = (id: string, semester: number | null = null) => {
     return useQuery({
         queryKey: ['student-marksheet-by-semester', id, semester],
-        queryFn: () => StudentsAPI().getStudentMarksheetBysemester({ id, semester }),
-        enabled: !!id && semester > 0,
+        queryFn: () => StudentsAPI().getStudentMarksheetBysemester({ id, semester: semester ?? undefined }),
+        enabled: !!id,
     });
 }

@@ -16,8 +16,13 @@ export const StudentsAPI = () => ({
         return data
     },
 
-    getStudentMarksheetBysemester: async ({ id, semester }: { id: string, semester: number }) => {
+    getStudentMarksheetBysemester: async ({ id, semester }: { id: string, semester?: number }) => {
+        if (semester){
         const { data } = await axiosInstance.get(`/student/marksheet/${id}?semester=${semester}`)
         return data
+        } else {
+        const { data } = await axiosInstance.get(`/student/marksheet/${id}`)
+        return data
+        }
     }
 })
