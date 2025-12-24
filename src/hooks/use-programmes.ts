@@ -23,20 +23,29 @@ export const useProgrammeSemesters = (prgCode: string, batch: string) => {
         enabled: !!prgCode && !!batch
     })
 }
-export const useProgrammeResult = (prgCode: string, batch: string) => {
+
+export const useProgrammeResult = (
+    prgCode: string, 
+    batch: string, 
+    semester?: number // Add this parameter
+) => {
+    const isOverall = semester === undefined || semester === null;
+    
     return useQuery({
-        queryKey: ['programme-result', prgCode, batch],
-        queryFn: () => ProgrammesAPI().getProgrammeBatchResult(prgCode, batch),
-        enabled: !!prgCode && !!batch
-    })
-}   
-export const useProgrammeResultBySemester = (prgCode: string, batch: string, semester: number) => {
-    return useQuery({
-        queryKey: ['programme-result-by-semester', prgCode, batch, semester],
-        queryFn: () => ProgrammesAPI().getProgrammeResultBySemester(prgCode, batch, semester),
-        enabled: !!prgCode && !!batch && semester > 0
-    })
-}
+        queryKey: isOverall 
+            ? ['programme-result', prgCode, batch] 
+            : ['programme-result-by-semester', prgCode, batch, semester],
+        queryFn: async () => {
+            if (isOverall) {
+                return ProgrammesAPI().getProgrammeBatchResult(prgCode, batch);
+            }
+            return ProgrammesAPI().getProgrammeResultBySemester(prgCode, batch, semester);
+        },
+        enabled: !!prgCode && !!batch && (isOverall || semester > 0)
+    });
+};
+
+
 export const useBatchEnrollment = (prgCode: string, batch: string) => {
     return useQuery({
         queryKey: ['batch-enrollment', prgCode, batch],
