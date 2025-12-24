@@ -1,3 +1,4 @@
+"use client";
 import { marksheetSemesterColumns, marksheetSubjectColumns } from "@/components/column"
 import { DataTable } from "@/components/data-table"
 import {
@@ -16,13 +17,13 @@ interface MarksheetProps {
     selectedSemester: number | undefined,
     dialogOpen: boolean,
     setDialogOpen: (open: boolean) => void,
-    onClose: () => void,
+    
 }
 
-export function Marksheet( {studentData, selectedSemester, dialogOpen=false,  setDialogOpen,onClose}: MarksheetProps) {
+export function Marksheet( {studentData, selectedSemester, dialogOpen=false,  setDialogOpen}: MarksheetProps) {
 
     const {data, isLoading} = useStudentMarksheetBySemester(studentData?.enrollment, selectedSemester ?? null);
-    console.log(dialogOpen)
+    
     return(
         <>
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
