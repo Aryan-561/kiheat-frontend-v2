@@ -3,15 +3,11 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
-import { useTheme } from "next-themes";
 import Toggle from "@/components/toggle-theme";
 import { useEffect, useState, useRef } from "react";
 import { ChevronDown, Send } from "lucide-react";
-import { useAnimatedHover } from "@/hooks/use-animated-hover";
 
 export default function HomePage() {
-  const { theme } = useTheme();
-  const { slideDownVariants, slideUpVariants, transitionConfig } = useAnimatedHover()
   const [mounted, setMounted] = useState(false);
   const ref = useRef(null);
 
@@ -65,7 +61,7 @@ export default function HomePage() {
   return (
     <div className="bg-background w-full" ref={ref}>
       <nav className="absolute top-0 w-full p-6 z-50 flex justify-between items-center pointer-events-none">
-        <div className="text-xl font-bold tracking-tighter opacity-0 animate-in fade-in duration-1000 z-50">
+        <div className="text-xl font-bold tracking-tighter opacity animate-in fade-in duration-1000 z-50">
           KIHEAT.
         </div>
         <div className="pointer-events-auto">
@@ -93,8 +89,7 @@ export default function HomePage() {
             />
           )}
 
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-background/90" />
-          <div className="absolute inset-0 bg-background/20 mix-blend-overlay" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-background/50" />
         </motion.div>
 
         {/* --- Content Layer --- */}
@@ -105,12 +100,7 @@ export default function HomePage() {
           style={{ y: textY }}
           className="relative z-10 text-center max-w-4xl px-6 flex flex-col items-center gap-8 mt-10"
         >
-          <motion.div
-            variants={textVariants}
-            className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 backdrop-blur-md text-sm font-medium text-primary tracking-wide uppercase"
-          >
-            2025 Rankings Released
-          </motion.div>
+       
 
           <motion.h1
             variants={textVariants}
@@ -131,7 +121,7 @@ export default function HomePage() {
           </motion.p>
 
           <motion.div variants={textVariants} className="flex flex-col sm:flex-row gap-4 items-center">
-            <Button variant="outline" effect="slide" className="rounded-full">
+            <Button variant={"outline"} effect="slide" className="rounded-full">
               Check Results
             </Button>
           </motion.div>
@@ -143,12 +133,12 @@ export default function HomePage() {
           transition={{ delay: 2, duration: 1 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground/60 z-20"
         >
-          <span className="text-xs uppercase tracking-widest">Scroll</span>
+          <span className="text-xs uppercase tracking-widest text-primary">Scroll</span>
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
-            <ChevronDown className="w-6 h-6" />
+            <ChevronDown className="w-6 h-6 text-primary" />
           </motion.div>
         </motion.div>
 
