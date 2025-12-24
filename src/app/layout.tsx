@@ -39,7 +39,7 @@ export default function RootLayout({
               <AppSidebar/>
             <SidebarInset>
               <SidebarTrigger className="absolute top-2 left-2 z-50" />
-              <main className="min-h-screen">
+              <main  className="min-h-screen">
                  <Toaster/>
               {children}
               </main>
