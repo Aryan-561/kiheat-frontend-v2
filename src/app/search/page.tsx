@@ -38,7 +38,7 @@ export default function SearchPage() {
   const router = useRouter();
   const isMobile = useIsMobile()
 
-  const [programme, setProgramme] = useState<string>("");
+  const [programme, setProgramme] = useState<string>("all");
   const [queryName, setQueryName] = useState<string>("");
   const [queryNumber, setQueryNumber] = useState<string>("");
   const [enrollmentError, setEnrollmentError] = useState<string>("");
@@ -59,6 +59,7 @@ export default function SearchPage() {
         : []
       : studentByName?.data ?? [];
 
+      console.log("Programme selected:", programme)
 
   const isLoading = loadingName || loadingEnrollment;
 
@@ -95,11 +96,12 @@ export default function SearchPage() {
       {/* Input Group */}
       <div className="flex w-full max-w-xl shadow-sm">
         <div className="sm:w-[180px]  w-fit h-fit shrink-0">
-          <Select disabled={queryNumber.length > 0} name="programme" onValueChange={(value) => setProgramme(value)}>
+          <Select disabled={queryNumber.length > 0} name="programme" defaultValue="all" onValueChange={(value) => setProgramme(value)}>
             <SelectTrigger className="w-full rounded-r-none border-r-0 focus:ring-0">
               <SelectValue placeholder="Programme" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="all">All Programmes</SelectItem>
               {loadingProgrammes ? (
                 <div className="p-2"><Loading /></div>
               ) : (
@@ -110,7 +112,7 @@ export default function SearchPage() {
                 ))
               )}
             </SelectContent>
-          </Select>
+          </Select> 
         </div>
 
         <Input
