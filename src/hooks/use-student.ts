@@ -2,11 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { StudentsAPI } from "../services/students-api";
 
 
-export const useStudentByName = (name: string, course: string) => { 
+export const useStudentByName = (name: string, programme: string) => { 
     return useQuery({
-        queryKey: ['student-by-name', name, course],
-        queryFn: () => StudentsAPI().getStudentByName({ name, course }),
-        enabled: !!name && !!course,
+        queryKey: ['student-by-name', name, programme],
+        queryFn: () => StudentsAPI().getStudentByName({ name, programme }),
+        enabled: !!name && !!programme,
         
         
     });
