@@ -1,9 +1,15 @@
 import axiosInstance from "@/lib/axios-instance"
 
 export const StudentsAPI = () => ({
-    getStudentByName: async ({ name, course }: { name: string, course: string }) => {
-        const { data } = await axiosInstance.get(`/student/search-by-name?name=${name}&course=${course}`)
-        return data
+    getStudentByName: async ({ name, programme }: { name: string, programme: string }) => {
+        if(programme == "all"){
+            const { data } = await axiosInstance.get(`/student/search-by-name?name=${name}`)
+            return data
+        }   
+        else {
+            const { data } = await axiosInstance.get(`/student/search-by-name?name=${name}&programme=${programme}`)
+            return data
+        }
     },
 
     getStudentByEnrollment: async ({ id }: { id: string }) => {
