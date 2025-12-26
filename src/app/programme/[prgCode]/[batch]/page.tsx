@@ -33,7 +33,7 @@ export default  function Page(){
     
   ;
     return(
-        <div className="p-8 w-[75vw] mx-auto">
+        <div className="p-8 sm:w-[75vw] mx-auto">
              
             <div className="flex gap-2 mb-6 flex-wrap">
                 <Button
