@@ -5,8 +5,8 @@ export const ProgrammesAPI = () => ({
         const { data } = await axiosInstance.get(`/programme/`)
         return data
     },
-    getProgrammeBatches: async (programme: string) => {
-        const { data } = await axiosInstance.get(`/programme/${programme}`)
+    getProgrammeBatches: async (prgCode: string) => {
+        const { data } = await axiosInstance.get(`/programme/batch/${prgCode}`)
         return data
     },
 
