@@ -8,11 +8,11 @@ export const useProgrammes = () => {
     })
 }
 
-export const useProgrammeBatches = (programme: string) => {
+export const useProgrammeBatches = (prgCode: string) => {
     return useQuery({
-        queryKey: ['programme-batches', programme],
-        queryFn: () => ProgrammesAPI().getProgrammeBatches(programme),
-        enabled: !!programme
+        queryKey: ['programme-batches', prgCode],
+        queryFn: () => ProgrammesAPI().getProgrammeBatches(prgCode),
+        enabled: !!prgCode
     })
 }
 
