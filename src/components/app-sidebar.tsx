@@ -68,15 +68,15 @@ const data = {
       items: [
         {
           title: "BCA",
-          url: "/programmes/bca",
+          url: "/programme/020",
         },
         {
           title: "BBA",
-          url: "/programmes/bba",
+          url: "/programme/888",
         },
         {
           title: "B.COM",
-          url: "/programmes/bcom",
+          url: "/programme/017",
         },
       ],
     },
@@ -85,7 +85,7 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar className="min-h-screen" collapsible="icon" {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
