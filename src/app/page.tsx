@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
-import Toggle from "@/components/toggle-theme";
+
 import { useEffect, useState, useRef } from "react";
 import { ChevronDown, Send } from "lucide-react";
 
@@ -59,13 +59,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="bg-background w-full" ref={ref}>
+    <div className="bg-background w-full relative" ref={ref}>
       <nav className="absolute top-0 w-full p-6 z-50 flex justify-between items-center pointer-events-none">
         <div className="text-xl font-bold tracking-tighter opacity animate-in fade-in duration-1000 z-50">
           KIHEAT.
-        </div>
-        <div className="pointer-events-auto">
-          <Toggle />
         </div>
       </nav>
 
