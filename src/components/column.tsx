@@ -58,14 +58,22 @@ export const columns : ColumnDef<StudentResult>[] = [
                      size="sm"
                      onClick={()=> column.toggleSorting(column.getIsSorted() === "asc")}
                      >
-                        Enrollment No.
-                        <ArrowUpDown className="size-4 text-gray-500"/>
+                         <span className="hidden sm:inline">Enrollment No.</span>
+                        <span className="sm:hidden">Eno.</span>
+                        <ArrowUpDown className="size-4 text-gray-500 hidden sm:inline"/>
                     </Button>
                 </div>
             )
         },
         cell: ({ row }) => {
-            return <div className="text-center">{row.getValue("enrollment")}</div>
+            const enrollment = row.getValue("enrollment") as string;
+            const shortEnrollment = enrollment.slice(0, 3) + "...";
+            return (
+                <div className="text-center" title={enrollment}>
+                    <span className="hidden sm:inline">{enrollment}</span>
+                    <span className="sm:hidden">{shortEnrollment}</span>
+                </div>
+            )
         },
         
     },
@@ -80,13 +88,20 @@ export const columns : ColumnDef<StudentResult>[] = [
                      onClick={()=> column.toggleSorting(column.getIsSorted() === "asc")}
                      >
                         Name
-                        <ArrowUpDown className="size-4 text-gray-500"/>
+                        <ArrowUpDown className="size-4 text-gray-500 hidden sm:inline"/>
                     </Button>
                 </div>
             )
         },
         cell: ({ row }) => {
-            return <div className="">{row.getValue("name")}</div>
+            const name = row.getValue("name") as string;
+            const shortName = name.split(' ')[0]; // First name only
+            return (
+                <div title={name}>
+                    <div className="hidden sm:block line-clamp-1">{name}</div>
+                    <div className="sm:hidden line-clamp-1">{shortName}...</div>
+                </div>
+            )
         },
         
     },
@@ -97,7 +112,13 @@ export const columns : ColumnDef<StudentResult>[] = [
         cell: ({ row }) => {
             const totalMarks = row.original.totalMarks;
             const maxMarks = row.original.maxMarks;
-            return <div className="text-center">{`${totalMarks} / ${maxMarks}`}</div>;
+            return <div className="text-center flex flex-col items-center justify-center sm:flex-row">
+                <div>
+                    {totalMarks}/
+                </div>
+                <div>{maxMarks}</div>
+                {/* {`${totalMarks} / ${maxMarks}`} */}
+                </div>;
         }
     },
 
@@ -105,7 +126,7 @@ export const columns : ColumnDef<StudentResult>[] = [
         accessorKey: 'percentage',
         header: ({column})=>{
             return(
-                <div className="flex justify-center">
+                <div className="hidden sm:flex justify-center">
                     <Button variant="ghost"
                      size="sm"
                      onClick={()=> column.toggleSorting(column.getIsSorted() === "asc")}
@@ -117,8 +138,12 @@ export const columns : ColumnDef<StudentResult>[] = [
             )
         },
         cell: ({ row }) => {
-            return <div className="text-center">{row.getValue("percentage")}</div>
+            const percentage = row.getValue("percentage") as number;
+            return <div className="hidden sm:block text-center">{percentage?.toFixed(2)}</div>
         },
+        meta: {
+            className: 'w-0 p-0 sm:w-auto sm:p-4'
+        }
     },
 
     {
@@ -146,7 +171,7 @@ export const columns : ColumnDef<StudentResult>[] = [
                      onClick={()=> column.toggleSorting(column.getIsSorted() === "asc")}
                      >
                         Rank
-                        <ArrowUpDown className="size-4 text-gray-500"/>
+                        <ArrowUpDown className="size-4 hidden sm:inline text-gray-500"/>
                     </Button>
                 </div>
             )

@@ -84,8 +84,9 @@ export function DataTable<TData, TValue>({
                             {table.getHeaderGroups().map((headerGroup) => (
                                 <TableRow key={headerGroup.id}>
                                     {headerGroup.headers.map((header) => {
+                                        const meta = header.column.columnDef.meta as { className?: string } | undefined;
                                         return (
-                                            <TableHead key={header.id} className="border-r last:border-r-0">
+                                            <TableHead key={header.id} className={`border-r last:border-r-0 ${meta?.className || ''}`}>
                                                 {header.isPlaceholder
                                                     ? null
                                                     : flexRender(
@@ -107,11 +108,14 @@ export function DataTable<TData, TValue>({
                                         onClick={() => handleRowClick?.(row.original)}
                                         className="cursor-pointer hover:bg-muted/50"
                                     >
-                                        {row.getVisibleCells().map((cell) => (
-                                            <TableCell className="border-r last:border-r-0" key={cell.id}>
-                                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                            </TableCell>
-                                        ))}
+                                        {row.getVisibleCells().map((cell) => {
+                                            const meta = cell.column.columnDef.meta as { className?: string } | undefined;
+                                            return (
+                                                <TableCell className={`border-r last:border-r-0 ${meta?.className || ''}`} key={cell.id}>
+                                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                                </TableCell>
+                                            );
+                                        })}
                                     </TableRow>
                                 ))
                             ) : (
