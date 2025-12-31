@@ -7,7 +7,9 @@ import Footer from "@/components/footer";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Toaster } from "@/components/ui/sonner"
-
+import { Separator } from "@/components/ui/separator"
+import { DynamicBreadcrumb } from "@/components/dynamic-breadcrumb"
+import Toggle from "@/components/toggle-theme";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -36,15 +38,25 @@ export default function RootLayout({
         <NextThemeProvider>
           <TanStackProvider>
             <SidebarProvider>
-              <AppSidebar/>
-            <SidebarInset>
-              <SidebarTrigger className="absolute top-2 left-2 z-50" />
-              <main  className="min-h-screen">
-                 <Toaster/>
-              {children}
-              </main>
-              <Footer />
-            </SidebarInset>
+              <AppSidebar />
+              <SidebarInset >
+                <header className="flex border border-b-natural-50 h-12  shrink-0 items-center justify-between pr-2 gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 sticky top-0">
+                  <div className="flex items-center gap-2 px-2 sm:px-4">
+                    <SidebarTrigger className="-ml-1" />
+                    <Separator
+                      orientation="vertical"
+                      className="mr-1 sm:mr-2 dark:bg-accent data-[orientation=vertical]:h-4"
+                    />
+                    <DynamicBreadcrumb />
+                  </div>
+                  <Toggle/>
+                </header>
+                <main className="min-h-screen flex flex-1 flex-col  pt-0">
+                  <Toaster />
+                  {children}
+                </main>
+                <Footer />
+              </SidebarInset>
             </SidebarProvider>
           </TanStackProvider>
         </NextThemeProvider>
