@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Marksheet } from "@/components/marksheet";
 import { useParams } from "next/navigation";
+import { ProgrammeBatchSelector } from "@/components/programme-batch-selector";
 
 
 export default  function Page(){
@@ -33,8 +34,12 @@ export default  function Page(){
     
   ;
     return(
-        <div className="p-8 sm:w-[75vw] mx-auto">
+        <>
+                <ProgrammeBatchSelector programCode={prgCode} />
+
              
+        <div className="px-4 py-8 sm:p-8 flex-1 sm:mx-auto  border border-natural-50 rounded-lg mx-2 sm:w-[90%]">
+
             <div className="flex gap-2 mb-6 flex-wrap">
                 <Button
                     variant={selectedSemester === undefined ? 'default' : 'outline'}
@@ -49,9 +54,10 @@ export default  function Page(){
                         key={sem}
                         variant={selectedSemester === sem ? 'default' : 'outline'}
                         onClick={() => setSelectedSemester(sem)}
-                        className="rounded-full"
+                        className="rounded-full cursor-pointer"
                     >
-                        Semester {sem}
+                        <span className="sm:hidden">Sem {sem}</span>
+                        <span className="hidden sm:inline">Semester {sem}</span>
                     </Button>
                 ))}
             </div>
@@ -64,5 +70,6 @@ export default  function Page(){
                
             />
         </div>
+        </>
     )
 }
